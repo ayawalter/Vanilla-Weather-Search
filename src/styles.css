@@ -1,6 +1,20 @@
+h1 {
+  font-size: 30px;
+}
+button {
+  background: #fdffcd;
+  border: solid 1px grey;
+  border-radius: 3px;
+  line-height: 25px;
+  padding: 1px 6px;
+  position: relative;
+  right: 50px;
+}
 footer {
   max-width: 600px;
   margin: 5px auto;
+  padding-left: 15px;
+  font-size: 13px;
 }
 .weather-app {
   font-family: "Comfortaa", cursive;
@@ -16,4 +30,31 @@ footer {
     rgb(166, 226, 229) 0%,
     rgb(198, 232, 221) 100.2%
   );
+}
+
+.body {
+  margin-top: 40px;
+}
+.weather-icon-today {
+  font-size: 100px;
+}
+.current-temperature,
+.active {
+  font-size: 40px;
+}
+
+#celcius-link,
+#fahrenheit-link {
+  text-decoration: none;
+}
+
+#fahrenheit-link {
+  font-size: 20px;
+  border-left: solid 0.5px;
+  padding-left: 5px;
+  position: relative;
+  top: -16px;
+}
+.weather-info {
+  font-size: small;
 }
