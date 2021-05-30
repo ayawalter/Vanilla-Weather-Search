@@ -35,8 +35,10 @@ footer {
 .body {
   margin-top: 40px;
 }
-.weather-icon-today {
-  font-size: 100px;
+#current-icon {
+  width: 130px;
+  position: relative;
+  top: -20px;
 }
 #current-temperature,
 .active {
