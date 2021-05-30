@@ -1,0 +1,15 @@
+.weather-app {
+  font-family: "Comfortaa", cursive;
+  border-radius: 20px;
+  box-shadow: 0px 4px 8px rgb(0 0 0 / 10%);
+  max-width: 600px;
+  display: block;
+  margin: 30px auto;
+  margin-bottom: 0;
+  padding: 30px;
+  background: radial-gradient(
+    circle at 10% 20%,
+    rgb(166, 226, 229) 0%,
+    rgb(198, 232, 221) 100.2%
+  );
+}
