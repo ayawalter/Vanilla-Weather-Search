@@ -18,8 +18,27 @@ function formatDate(now) {
 }
 
 function showWeather(response) {
+  console.log(response.data);
   let h1 = document.querySelector("h1");
   h1.innerHTML = `${response.data.name}`;
+
+  let weatherDescription = document.querySelector("#weather-description");
+  weatherDescription.innerHTML = `${response.data.weather[0].description}`;
+
+  let currentTemperature = document.querySelector("#current-temperature");
+  currentTemperature.innerHTML = Math.round(response.data.main.temp);
+
+  let minTemperature = document.querySelector("#today-min-temperature");
+  minTemperature.innerHTML = Math.round(response.data.main.temp_min);
+
+  let maxTemperature = document.querySelector("#today-max-temperature");
+  maxTemperature.innerHTML = Math.round(response.data.main.temp_max);
+
+  let humidity = document.querySelector("#humidity");
+  humidity.innerHTML = Math.round(response.data.main.humidity);
+
+  let wind = document.querySelector("#windspeed");
+  wind.innerHTML = Math.round((response.data.wind.speed * 60 * 60) / 1000);
 }
 
 function searchCity(event) {

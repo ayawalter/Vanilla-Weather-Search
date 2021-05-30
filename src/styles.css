@@ -38,7 +38,7 @@ footer {
 .weather-icon-today {
   font-size: 100px;
 }
-.current-temperature,
+#current-temperature,
 .active {
   font-size: 40px;
 }
@@ -58,12 +58,13 @@ footer {
 .weather-info {
   font-size: small;
 }
-.weather-description {
-  font-size: 20px;
-}
+
 .last-update {
   font-size: small;
   margin-top: 10px;
+}
+#weather-description {
+  font-size: 20px;
 }
 #current-date-time {
   font-size: 16px;
