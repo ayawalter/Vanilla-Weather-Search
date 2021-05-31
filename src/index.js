@@ -18,15 +18,20 @@ function formatDate(now) {
 }
 
 function showWeather(response) {
-  console.log(response.data);
   let h1 = document.querySelector("h1");
   h1.innerHTML = `${response.data.name}`;
+
+  celcius.classList.add("active");
+  celcius.classList.remove("inactive");
+  fahrenheit.classList.add("inactive");
+  fahrenheit.classList.remove("active");
+  celciusTemp = response.data.main.temp;
 
   let weatherDescription = document.querySelector("#weather-description");
   weatherDescription.innerHTML = `${response.data.weather[0].description}`;
 
   let currentTemperature = document.querySelector("#current-temperature");
-  currentTemperature.innerHTML = Math.round(response.data.main.temp);
+  currentTemperature.innerHTML = Math.round(celciusTemp);
 
   let minTemperature = document.querySelector("#today-min-temperature");
   minTemperature.innerHTML = Math.round(response.data.main.temp_min);
@@ -67,6 +72,30 @@ function getCurrentLocation() {
   navigator.geolocation.getCurrentPosition(showCurrentLocation);
 }
 
+function showFahrenheit(event) {
+  event.preventDefault();
+  celcius.classList.add("inactive");
+  celcius.classList.remove("active");
+  fahrenheit.classList.add("active");
+  fahrenheit.classList.remove("inactive");
+  let fahrenheitTemp = Math.round((celciusTemp * 9) / 5 + 32);
+  let tempElement = document.querySelector("#current-temperature");
+  tempElement.innerHTML = fahrenheitTemp;
+}
+
+function showCelcius(event) {
+  event.preventDefault();
+
+  celcius.classList.add("active");
+  celcius.classList.remove("inactive");
+  fahrenheit.classList.add("inactive");
+  fahrenheit.classList.remove("active");
+  let tempElement = document.querySelector("#current-temperature");
+  tempElement.innerHTML = Math.round(celciusTemp);
+}
+
+let celciusTemp = null;
+
 let lastUpdate = document.querySelector("#current-date-time");
 let now = new Date();
 lastUpdate.innerHTML = formatDate(now);
@@ -76,3 +105,9 @@ search.addEventListener("submit", searchCity);
 
 let button = document.querySelector("button");
 button.addEventListener("click", getCurrentLocation);
+
+let fahrenheit = document.querySelector("#fahrenheit-link");
+fahrenheit.addEventListener("click", showFahrenheit);
+
+let celcius = document.querySelector("#celcius-link");
+celcius.addEventListener("click", showCelcius);

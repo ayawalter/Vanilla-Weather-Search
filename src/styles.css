@@ -40,9 +40,10 @@ footer {
   position: relative;
   top: -20px;
 }
-#current-temperature,
-.active {
-  font-size: 40px;
+
+.active:hover {
+  cursor: default;
+  color: #212529;
 }
 
 #celcius-link,
@@ -50,12 +51,19 @@ footer {
   text-decoration: none;
 }
 
-#fahrenheit-link {
+#line {
+  position: relative;
+  top: -18px;
+}
+.inactive {
   font-size: 20px;
-  border-left: solid 0.5px;
-  padding-left: 5px;
   position: relative;
   top: -16px;
+}
+#current-temperature,
+.active {
+  font-size: 40px;
+  color: #212529;
 }
 .weather-info {
   font-size: small;
