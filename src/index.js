@@ -50,6 +50,9 @@ function showWeather(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+  let lastUpdate = document.querySelector("#current-date-time");
+  let now = new Date();
+  lastUpdate.innerHTML = formatDate(now);
 }
 
 function search(city) {
@@ -99,10 +102,6 @@ function showCelcius(event) {
 }
 
 let celciusTemp = null;
-
-let lastUpdate = document.querySelector("#current-date-time");
-let now = new Date();
-lastUpdate.innerHTML = formatDate(now);
 
 let submit = document.querySelector("form");
 submit.addEventListener("submit", submitCity);
