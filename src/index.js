@@ -52,12 +52,16 @@ function showWeather(response) {
   );
 }
 
-function searchCity(event) {
+function search(city) {
+  let apikey = "85890638d00975101c866cb82a4d3716";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apikey}`;
+  axios.get(apiUrl).then(showWeather);
+}
+
+function submitCity(event) {
   event.preventDefault();
   let cityInput = document.querySelector("#city-input");
-  let apikey = "85890638d00975101c866cb82a4d3716";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&units=metric&appid=${apikey}`;
-  axios.get(apiUrl).then(showWeather);
+  search(cityInput.value);
 }
 
 function showCurrentLocation(position) {
@@ -100,8 +104,8 @@ let lastUpdate = document.querySelector("#current-date-time");
 let now = new Date();
 lastUpdate.innerHTML = formatDate(now);
 
-let search = document.querySelector("form");
-search.addEventListener("submit", searchCity);
+let submit = document.querySelector("form");
+submit.addEventListener("submit", submitCity);
 
 let button = document.querySelector("button");
 button.addEventListener("click", getCurrentLocation);
@@ -111,3 +115,5 @@ fahrenheit.addEventListener("click", showFahrenheit);
 
 let celcius = document.querySelector("#celcius-link");
 celcius.addEventListener("click", showCelcius);
+
+search("Basel");
