@@ -17,31 +17,48 @@ function formatDate(now) {
   return `${day} ${hour}:${minute}`;
 }
 
-function displayForecast() {
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
+function displayForecast(response) {
+  let forecastData = response.data.daily;
   let forecast = document.querySelector("#weather-forecast");
 
   let forecastHTML = `<div class="row">`;
-  let days = ["Sun", "Mon", "Tue"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="col-2" id="weekly-weather">
-      <div class="forecast-date">${day}</div>
+
+  forecastData.forEach(function (day, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="col-2" id="weekly-weather">
+      <div class="forecast-date">${formatDay(day.dt)}</div>
         <img
-          src="http://openweathermap.org/img/wn/10d@2x.png"
+          src="http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png"
           alt="rain"
          class="forecast-icon"
           width="60"
               />
          <div class="forecast-temp">
-         <span class="forecast-min-temp">8</span>
-          / <span class="forecast-max-temp">14</span>°C
+         <span class="forecast-min-temp">${Math.round(day.temp.min)}</span>
+          / <span class="forecast-max-temp">${Math.round(day.temp.max)}</span>°C
       </div>
        </div>
             `;
+    }
   });
   forecastHTML = forecastHTML + `</div>`;
   forecast.innerHTML = forecastHTML;
+}
+
+function getForecast(coordinates) {
+  let apikey = "85890638d00975101c866cb82a4d3716";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apikey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function showWeather(response) {
@@ -80,6 +97,8 @@ function showWeather(response) {
   let lastUpdate = document.querySelector("#current-date-time");
   let now = new Date();
   lastUpdate.innerHTML = formatDate(now);
+
+  getForecast(response.data.coord);
 }
 
 function search(city) {
@@ -143,4 +162,3 @@ let celcius = document.querySelector("#celcius-link");
 celcius.addEventListener("click", showCelcius);
 
 search("Basel");
-displayForecast();
