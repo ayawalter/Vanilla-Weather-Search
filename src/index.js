@@ -17,6 +17,25 @@ function formatDate(now) {
   return `${day} ${hour}:${minute}`;
 }
 
+function displayForecast() {
+  let forecast = document.querySelector("#weather-forecast");
+  forecast.innerHTML = `
+  <div class="row">
+            <div class="col-2" id="weekly-weather">
+              <div class="forecast-date">Mon</div>
+              <img
+                src="http://openweathermap.org/img/wn/10d@2x.png"
+                alt="rain"
+                class="forecast-icon"
+                width="60"
+              />
+              <div class="forecast-temp">
+                <span class="forecast-min-temp">8</span>
+                / <span class="forecast-max-temp">14</span>°C
+              </div>
+            </div>`;
+}
+
 function showWeather(response) {
   let h1 = document.querySelector("h1");
   h1.innerHTML = `${response.data.name}`;
@@ -116,3 +135,4 @@ let celcius = document.querySelector("#celcius-link");
 celcius.addEventListener("click", showCelcius);
 
 search("Basel");
+displayForecast();
