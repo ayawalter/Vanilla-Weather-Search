@@ -79,3 +79,16 @@ footer {
 #current-date-time {
   font-size: 16px;
 }
+
+.weather-forecast {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.forecast-date {
+  font-size: 15px;
+}
+
+.forecast-temp {
+  font-size: 12px;
+}
