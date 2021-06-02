@@ -64,11 +64,6 @@ function getForecast(coordinates) {
 function showWeather(response) {
   let h1 = document.querySelector("h1");
   h1.innerHTML = `${response.data.name}`;
-
-  celcius.classList.add("active");
-  celcius.classList.remove("inactive");
-  fahrenheit.classList.add("inactive");
-  fahrenheit.classList.remove("active");
   celciusTemp = response.data.main.temp;
 
   let weatherDescription = document.querySelector("#weather-description");
@@ -125,28 +120,6 @@ function getCurrentLocation() {
   navigator.geolocation.getCurrentPosition(showCurrentLocation);
 }
 
-function showFahrenheit(event) {
-  event.preventDefault();
-  celcius.classList.add("inactive");
-  celcius.classList.remove("active");
-  fahrenheit.classList.add("active");
-  fahrenheit.classList.remove("inactive");
-  let fahrenheitTemp = Math.round((celciusTemp * 9) / 5 + 32);
-  let tempElement = document.querySelector("#current-temperature");
-  tempElement.innerHTML = fahrenheitTemp;
-}
-
-function showCelcius(event) {
-  event.preventDefault();
-
-  celcius.classList.add("active");
-  celcius.classList.remove("inactive");
-  fahrenheit.classList.add("inactive");
-  fahrenheit.classList.remove("active");
-  let tempElement = document.querySelector("#current-temperature");
-  tempElement.innerHTML = Math.round(celciusTemp);
-}
-
 let celciusTemp = null;
 
 let submit = document.querySelector("form");
@@ -154,11 +127,5 @@ submit.addEventListener("submit", submitCity);
 
 let button = document.querySelector("button");
 button.addEventListener("click", getCurrentLocation);
-
-let fahrenheit = document.querySelector("#fahrenheit-link");
-fahrenheit.addEventListener("click", showFahrenheit);
-
-let celcius = document.querySelector("#celcius-link");
-celcius.addEventListener("click", showCelcius);
 
 search("Basel");

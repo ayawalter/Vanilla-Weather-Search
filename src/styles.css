@@ -41,27 +41,7 @@ footer {
   top: -20px;
 }
 
-.active:hover {
-  cursor: default;
-  color: #212529;
-}
-
-#celcius-link,
-#fahrenheit-link {
-  text-decoration: none;
-}
-
-#line {
-  position: relative;
-  top: -18px;
-}
-.inactive {
-  font-size: 20px;
-  position: relative;
-  top: -16px;
-}
-#current-temperature,
-.active {
+#current-temperature {
   font-size: 40px;
   color: #212529;
 }
